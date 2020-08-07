@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane fx:id="border_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Autori">
+    <left>
+        <SplitPane prefHeight="160.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                    <children>
+                        <Button fx:id="autori" layoutX="23.0" layoutY="68.0" mnemonicParsing="false" onAction="#ucitajAutore" prefHeight="53.0" prefWidth="149.0" text="Autori" />
+                        <Button fx:id="knjige" layoutX="23.0" layoutY="135.0" mnemonicParsing="false" onAction="#ucitajKnjige" prefHeight="56.0" prefWidth="150.0" text="Knjige" />
+                        <Button fx:id="clanovi" layoutX="24.0" layoutY="207.0" mnemonicParsing="false" onAction="#ucitajClanove" prefHeight="52.0" prefWidth="151.0" text="Članovi" />
+                        <Button layoutX="25.0" layoutY="277.0" mnemonicParsing="false" onAction="#ucitajRezervacije" prefHeight="50.0" prefWidth="149.0" text="Povijest rezervacija" />
+                        <Button fx:id="odjava" layoutX="119.0" layoutY="359.0" mnemonicParsing="false" onAction="#logout" text="Odjavi se" />
+                        <Label fx:id="LoggedUserlbl" layoutX="22.0" layoutY="28.0" prefHeight="31.0" prefWidth="155.0" text="Label" />
+                    </children></AnchorPane>
+            </items>
+        </SplitPane>
+    </left>
+    <center>
+        <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+            <tabs>
+                <Tab text="Izlistaj autore">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Pane prefHeight="373.0" prefWidth="402.0">
+                           <children>
+                              <TableView fx:id="tableView" prefHeight="305.0" prefWidth="400.0">
+                                <columns>
+                                  <TableColumn fx:id="idLbl" prefWidth="75.0" text="Id" />
+                                  <TableColumn fx:id="imeAutoraLbl" editable="true" onEditCommit="#editFristnameAutorToDatabase" prefWidth="75.0" text="Ime" />
+                                    <TableColumn fx:id="prezimeAutoraLbl" editable="true" onEditCommit="#editLastnameAutorToDatabase" prefWidth="75.0" text="Prezime" />
+                                    <TableColumn fx:id="datumRodjenjaLbl" prefWidth="112.0" text="Datum rođenja" />
+                                </columns>
+                              </TableView>
+                              <Button layoutX="294.0" layoutY="334.0" mnemonicParsing="false" onAction="#deleteAutorFromDatabase" prefHeight="25.0" prefWidth="72.0" text="Izbriši" />
+                           </children>
+                        </Pane>
+                     </children></AnchorPane>
+                    </content>
+                </Tab>
+                <Tab text="Dodaj autore">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Pane layoutX="4.0" layoutY="3.0" prefHeight="366.0" prefWidth="393.0">
+                           <children>
+                              <Label layoutX="22.0" layoutY="39.0" text="Ime autora:" />
+                              <TextField fx:id="ime" layoutX="18.0" layoutY="62.0" prefHeight="25.0" prefWidth="188.0" promptText="Unesite ime autora" />
+                              <Label layoutX="22.0" layoutY="99.0" text="Prezime autora:" />
+                              <TextField fx:id="prezime" layoutX="19.0" layoutY="126.0" prefHeight="25.0" prefWidth="191.0" promptText="Unesite prezime autora" />
+                              <Label layoutX="22.0" layoutY="166.0" text="Datum rođenja:" />
+                              <DatePicker fx:id="datumRodjenja" layoutX="18.0" layoutY="193.0" prefHeight="25.0" prefWidth="192.0" promptText="Odaberite datum" />
+                              <Button fx:id="spremiAutora" layoutX="145.0" layoutY="251.0" mnemonicParsing="false" onAction="#addAutorToDatabase" text="Spremi" />
+                           </children>
+                        </Pane>
+                     </children></AnchorPane>
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </center>
+</BorderPane>

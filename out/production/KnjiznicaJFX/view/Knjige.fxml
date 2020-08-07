@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane fx:id="border_pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Knjige">
+    <left>
+        <SplitPane prefHeight="160.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                    <children>
+                        <Button fx:id="autori" layoutX="23.0" layoutY="68.0" mnemonicParsing="false" onAction="#ucitajAutore" prefHeight="53.0" prefWidth="149.0" text="Autori" />
+                        <Button fx:id="knjige" layoutX="23.0" layoutY="135.0" mnemonicParsing="false" onAction="#ucitajKnjige" prefHeight="56.0" prefWidth="150.0" text="Knjige" />
+                        <Button fx:id="clanovi" layoutX="24.0" layoutY="207.0" mnemonicParsing="false" onAction="#ucitajClanove" prefHeight="52.0" prefWidth="151.0" text="Članovi" />
+                        <Button layoutX="25.0" layoutY="277.0" mnemonicParsing="false" onAction="#ucitajRezervacije" prefHeight="50.0" prefWidth="149.0" text="Povijest rezervacija" />
+                        <Button fx:id="odjava" layoutX="119.0" layoutY="359.0" mnemonicParsing="false" onAction="#logout" text="Odjavi se" />
+                        <Label fx:id="LoggedUserlbl" layoutX="22.0" layoutY="28.0" prefHeight="31.0" prefWidth="155.0" text="Label" />
+                    </children></AnchorPane>
+            </items>
+        </SplitPane>
+    </left>
+   <center>
+      <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+        <tabs>
+          <Tab text="Izlistaj knjige">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Pane prefHeight="372.0" prefWidth="401.0">
+                           <children>
+                              <TableView fx:id="tableView" prefHeight="305.0" prefWidth="401.0">
+                                <columns>
+                                  <TableColumn fx:id="idLbl" prefWidth="42.0" text="Id" />
+                                  <TableColumn fx:id="nazivLbl" editable="true" onEditCommit="#editNazivKnjigeToDatabase" prefWidth="108.0" text="Naziv" />
+                                    <TableColumn fx:id="autorLbl" prefWidth="93.0" text="Autor" />
+                                    <TableColumn fx:id="vrstaLbl" editable="true" onEditCommit="#editVrstaKnijgeToDatabase" prefWidth="105.0" text="Vrsta" />
+                                    <TableColumn fx:id="statusLbl" prefWidth="51.0" text="Status" />
+                                </columns>
+                              </TableView>
+                              <Button layoutX="14.0" layoutY="324.0" mnemonicParsing="false" onAction="#deleteKnjigaFromDatabase" text="Izbriši" />
+                              <Button layoutX="178.0" layoutY="324.0" mnemonicParsing="false" text="Uredi" />
+                              <Button layoutX="310.0" layoutY="324.0" mnemonicParsing="false" text="Vrati knjigu" />
+                           </children>
+                        </Pane>
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Dodaj knjigu">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Pane prefHeight="374.0" prefWidth="404.0">
+                           <children>
+                              <Label layoutX="30.0" layoutY="27.0" text="Naziv:" />
+                              <TextField fx:id="nazivKnjigeTxt" layoutX="30.0" layoutY="53.0" prefHeight="25.0" prefWidth="180.0" promptText="Unesite naziv knjige" />
+                              <Label layoutX="29.0" layoutY="98.0" text="Autor:" />
+                              <Label layoutX="29.0" layoutY="170.0" text="Vrsta:" />
+                              <TextField fx:id="vrstaKnjigeTxt" layoutX="30.0" layoutY="195.0" prefHeight="25.0" prefWidth="183.0" promptText="Unesite vrstu knjige" />
+                              <Button layoutX="179.0" layoutY="259.0" mnemonicParsing="false" onAction="#spremiKnjigu" text="Spremi" />
+                               <TextField fx:id="IdAutora" layoutX="285.0" layoutY="148.0" visible="false" />
+                              <ComboBox fx:id="autorList" layoutX="29.0" layoutY="123.0" onAction="#dohvatiId" prefHeight="25.0" prefWidth="181.0" promptText="Odaberite autora" />
+                           </children>
+                        </Pane>
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </center>
+</BorderPane>
